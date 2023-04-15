@@ -1,0 +1,64 @@
+import mongoose from "mongoose";
+const kittySchema=new mongoose.Schema({
+    title:{
+        type:String,
+        required:true,
+    },
+    type:{
+        type:String,
+        requried:true,
+    },
+    hotelname:{
+        type:String,
+        required:true,
+    },
+    description:{
+        type:String,
+        required:true,
+    },
+    distance:{
+        type:String,
+        required:true,
+    },
+    address:{
+        type:String,
+        required:true,
+    },
+    city:{
+        type:String,
+        required:true,
+    },
+    image:[
+        {
+            public_id:{
+                type:String,
+                required:true,
+            },
+            url:{
+                type:String,
+                required:true,
+            }
+        }
+    ],
+    cheapestprice:{
+        type:Number,
+        required:true,
+    },
+    feature:{
+        type:Boolean,
+        default:false,
+    },
+    averagerating:{
+        type:Number,
+        default:0
+    },
+    room:[
+        {
+            type:mongoose.Schema.ObjectId,
+            ref:"room",
+        }
+    ]
+
+});
+const hoteldata=mongoose.model("hotel",kittySchema);
+export default hoteldata;
